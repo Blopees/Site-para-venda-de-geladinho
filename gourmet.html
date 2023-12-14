@@ -188,69 +188,6 @@
     integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
     crossorigin="anonymous"></script>
     
-    <!-- Seu código HTML existente aqui -->
-
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-      const addToCartButtons = document.querySelectorAll('.btn-outline-warning, .btn-outline-danger');
-      const cartItemsList = document.getElementById('cart-items');
-      const totalElement = document.getElementById('total');
-      const checkoutButton = document.getElementById('checkout');
-  
-      let cart = [];
-  
-      addToCartButtons.forEach(button => {
-          button.addEventListener('click', addToCart);
-      });
-  
-      checkoutButton.addEventListener('click', checkout);
-  
-      function addToCart(event) {
-          const button = event.target;
-          const product = button.parentNode;
-          const productName = product.querySelector('ul li:first-child').textContent;
-          const productPrice = parseFloat(product.querySelector('ul li:last-child').textContent.split(' ')[1]);
-  
-          const cartItem = {
-              name: productName,
-              price: productPrice,
-              quantity: 1
-          };
-  
-          cart.push(cartItem);
-  
-          updateCartDisplay();
-      }
-  
-      function updateCartDisplay() {
-          cartItemsList.innerHTML = '';
-  
-          let total = 0;
-  
-          cart.forEach(item => {
-              const li = document.createElement('li');
-              li.textContent = `${item.name} x ${item.quantity} - R$ ${item.price.toFixed(2)}`;
-              cartItemsList.appendChild(li);
-  
-              total += item.price * item.quantity;
-          });
-  
-          totalElement.textContent = `Total: R$ ${total.toFixed(2)}`;
-      }
-  
-      function checkout() {
-          // Aqui você pode implementar a lógica para processar o pedido no servidor
-          // e redirecionar o usuário para uma página de pagamento, por exemplo.
-          alert('Pedido finalizado! Implemente a lógica de pagamento no servidor.');
-      }
-  });
-  </script>
-  
-  </body>
-  
-  </html>
-  
-
 </body>
 
 </html>
